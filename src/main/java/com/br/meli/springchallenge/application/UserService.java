@@ -2,10 +2,10 @@ package com.br.meli.springchallenge.application;
 
 import com.br.meli.springchallenge.dto.FollowerCountResponse;
 import com.br.meli.springchallenge.dto.FollowerListResponse;
-import com.br.meli.springchallenge.model.Follower;
-import com.br.meli.springchallenge.model.User;
-import com.br.meli.springchallenge.repository.FollowerRepository;
-import com.br.meli.springchallenge.repository.UserRepository;
+import com.br.meli.springchallenge.domain.model.Follower;
+import com.br.meli.springchallenge.domain.model.User;
+import com.br.meli.springchallenge.domain.repository.FollowerRepository;
+import com.br.meli.springchallenge.domain.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,22 +13,20 @@ import java.util.List;
 @Service
 public class UserService {
     private UserRepository userRepository;
-    private com.br.meli.springchallenge.repository.FollowerRepository followerRepository;
+    private FollowerRepository followerRepository;
+    private FollowValidator followValidator;
 
-    public UserService(UserRepository userRepository, FollowerRepository followerRepository) {
+    public UserService(UserRepository userRepository, FollowerRepository followerRepository, FollowValidator followValidator) {
         this.userRepository = userRepository;
         this.followerRepository = followerRepository;
+        this.followValidator = followValidator;
     }
 
-    public void follow(int userId, int userIdToFollow) {
+    public void follow(int userId, int userIdToFollow) throws Exception {
+        followValidator.validate(userId, userIdToFollow);
+
         User follower = userRepository.findById(userId).get();
         User toFollow =  userRepository.findById(userIdToFollow).get();
-
-        //usuario consegue seguir ele mesmo
-        if(followerRepository.findByIds(userId, userIdToFollow) != null) {
-            return;
-        }
-
         followerRepository.save(new Follower(follower, toFollow));
     }
 

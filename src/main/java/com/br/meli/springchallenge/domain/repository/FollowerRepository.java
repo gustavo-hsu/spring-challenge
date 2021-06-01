@@ -1,6 +1,6 @@
-package com.br.meli.springchallenge.repository;
+package com.br.meli.springchallenge.domain.repository;
 
-import com.br.meli.springchallenge.model.Follower;
+import com.br.meli.springchallenge.domain.model.Follower;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

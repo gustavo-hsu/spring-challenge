@@ -1,4 +1,4 @@
-package com.br.meli.springchallenge.model;
+package com.br.meli.springchallenge.domain.model;
 
 import javax.persistence.*;
 
@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Follower {
     @Id
     @GeneratedValue
-    private long id;
+    private int id;
 
     @ManyToOne
     @JoinColumn(name="from_user_id")

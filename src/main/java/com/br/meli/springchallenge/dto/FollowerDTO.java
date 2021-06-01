@@ -1,7 +1,6 @@
 package com.br.meli.springchallenge.dto;
 
-import com.br.meli.springchallenge.model.Follower;
-import lombok.AllArgsConstructor;
+import com.br.meli.springchallenge.domain.model.Follower;
 import lombok.Getter;
 import lombok.Setter;
 

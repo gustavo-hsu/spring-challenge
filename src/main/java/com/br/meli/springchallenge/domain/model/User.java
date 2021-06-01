@@ -1,4 +1,4 @@
-package com.br.meli.springchallenge.model;
+package com.br.meli.springchallenge.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-import org.springframework.data.repository.cdi.Eager;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
@@ -19,15 +18,6 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @NoArgsConstructor
 public class User {
-//    @Id
-//    @GeneratedValue
-//    private Integer id;
-//
-//    @Column(name = "name", nullable = false)
-//    private String name;
-//
-//    @OneToMany(mappedBy = "user_follower")
-//    private List<UserFollower> followers;
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;

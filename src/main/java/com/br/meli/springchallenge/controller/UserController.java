@@ -3,7 +3,7 @@ package com.br.meli.springchallenge.controller;
 import com.br.meli.springchallenge.application.UserService;
 import com.br.meli.springchallenge.dto.FollowerCountResponse;
 import com.br.meli.springchallenge.dto.FollowerListResponse;
-import com.br.meli.springchallenge.model.User;
+import com.br.meli.springchallenge.domain.model.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +20,7 @@ public class UserController {
 
 
     @PostMapping("/{userId}/follow/{userIdToFollow}")
-    public ResponseEntity follow(@PathVariable int userId, @PathVariable int userIdToFollow){
+    public ResponseEntity follow(@PathVariable int userId, @PathVariable int userIdToFollow) throws Exception {
         userService.follow(userId, userIdToFollow);
 
         //falta retornar bad request quando dá errado
