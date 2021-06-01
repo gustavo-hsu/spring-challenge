@@ -1,4 +1,4 @@
-package com.br.meli.springchallenge.boundaries.dto;
+package com.br.meli.springchallenge.dto;
 
 import com.br.meli.springchallenge.model.Follower;
 import lombok.AllArgsConstructor;

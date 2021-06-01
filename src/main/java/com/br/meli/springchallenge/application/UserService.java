@@ -1,7 +1,7 @@
 package com.br.meli.springchallenge.application;
 
-import com.br.meli.springchallenge.boundaries.dto.FollowerCountResponse;
-import com.br.meli.springchallenge.boundaries.dto.FollowerListResponse;
+import com.br.meli.springchallenge.dto.FollowerCountResponse;
+import com.br.meli.springchallenge.dto.FollowerListResponse;
 import com.br.meli.springchallenge.model.Follower;
 import com.br.meli.springchallenge.model.User;
 import com.br.meli.springchallenge.repository.FollowerRepository;

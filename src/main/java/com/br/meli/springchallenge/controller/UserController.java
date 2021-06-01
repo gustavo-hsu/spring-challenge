@@ -1,8 +1,8 @@
-package com.br.meli.springchallenge.boundaries.controller;
+package com.br.meli.springchallenge.controller;
 
 import com.br.meli.springchallenge.application.UserService;
-import com.br.meli.springchallenge.boundaries.dto.FollowerCountResponse;
-import com.br.meli.springchallenge.boundaries.dto.FollowerListResponse;
+import com.br.meli.springchallenge.dto.FollowerCountResponse;
+import com.br.meli.springchallenge.dto.FollowerListResponse;
 import com.br.meli.springchallenge.model.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
