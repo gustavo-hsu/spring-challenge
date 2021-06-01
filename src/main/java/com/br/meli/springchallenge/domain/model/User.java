@@ -1,6 +1,8 @@
 package com.br.meli.springchallenge.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,14 +27,12 @@ public class User {
     private String name;
 
     @Nullable
-    @OneToMany(mappedBy="to")
+    @OneToMany(mappedBy="follower")
     private List<Follower> followers;
 
     @Nullable
-    @OneToMany(mappedBy="from")
-    @Fetch(FetchMode.JOIN)
+    @OneToMany(mappedBy="following")
     private List<Follower> following;
-
 
     public User(String name) {
         this.name = name;

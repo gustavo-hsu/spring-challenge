@@ -1,9 +1,14 @@
 package com.br.meli.springchallenge.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name="follower")
+@NoArgsConstructor
 public class Follower {
     @Id
     @GeneratedValue
@@ -11,24 +16,30 @@ public class Follower {
 
     @ManyToOne
     @JoinColumn(name="from_user_id")
-    private User from;
+    private User follower;
 
     @ManyToOne
     @JoinColumn(name="to_user_id")
-    private User to;
+    private User following;
 
-    public Follower() {};
-
-    public Follower(User from, User to) {
-        this.from = from;
-        this.to = to;
+    public Follower(User follower, User following) {
+        this.follower = follower;
+        this.following = following;
     }
 
-    public int getId() {
-        return this.from.getId();
+    public int getFollowerId() {
+        return this.follower.getId();
     }
 
-    public String getName() {
-        return this.from.getName();
+    public String getFollowerName() {
+        return this.follower.getName();
+    }
+
+    public int getFollowingId() {
+        return this.following.getId();
+    }
+
+    public String getFollowingName() {
+        return this.following.getName();
     }
 }

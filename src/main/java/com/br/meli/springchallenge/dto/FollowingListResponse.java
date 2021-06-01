@@ -15,14 +15,14 @@ import java.util.List;
 public class FollowingListResponse {
     private int userId;
     private String userName;
-    private List<FollowDTO> followed = new ArrayList<>();
+    private List<FollowingDTO> followed = new ArrayList<FollowingDTO>();
 
     public FollowingListResponse(User user) {
         this.userId = user.getId();
         this.userName = user.getName();
 
-        for (Follower follower : user.getFollowing()) {
-            this.followed.add(new FollowDTO(follower));
+        for (Follower follower : user.getFollowers()) {
+            this.followed.add(new FollowingDTO(follower));
         }
     }
 }

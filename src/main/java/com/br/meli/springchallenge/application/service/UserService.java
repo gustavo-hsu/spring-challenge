@@ -1,5 +1,6 @@
-package com.br.meli.springchallenge.application;
+package com.br.meli.springchallenge.application.service;
 
+import com.br.meli.springchallenge.application.validator.FollowValidator;
 import com.br.meli.springchallenge.dto.FollowerCountResponse;
 import com.br.meli.springchallenge.dto.FollowerListResponse;
 import com.br.meli.springchallenge.domain.model.Follower;
@@ -23,7 +24,7 @@ public class UserService {
         this.followValidator = followValidator;
     }
 
-    public void follow(int userId, int userIdToFollow) throws Exception {
+    public void follow(int userId, int userIdToFollow) {
         followValidator.validate(userId, userIdToFollow);
 
         User follower = userRepository.findById(userId).get();
@@ -44,8 +45,7 @@ public class UserService {
     public FollowerListResponse getFollowerList(int userId) {
         User user =  userRepository.findById(userId).get();
 
-        FollowerListResponse followerList = new FollowerListResponse(user);
-        return followerList;
+        return new FollowerListResponse(user);
     }
 
     public FollowingListResponse getFollowingList(int userId) {

@@ -6,12 +6,12 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class FollowDTO {
+public class FollowingDTO {
     private int userId;
     private String userName;
 
-    public FollowDTO(Follower follower) {
-        this.userId = follower.getId();
-        this.userName = follower.getName();
+    public FollowingDTO(Follower follower) {
+        this.userId = follower.getFollowingId();
+        this.userName = follower.getFollowingName();
     }
 }

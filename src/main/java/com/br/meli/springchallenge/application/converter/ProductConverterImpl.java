@@ -1,5 +1,6 @@
-package com.br.meli.springchallenge.application;
+package com.br.meli.springchallenge.application.converter;
 
+import com.br.meli.springchallenge.application.converter.ProductConverter;
 import com.br.meli.springchallenge.domain.model.Post;
 import com.br.meli.springchallenge.domain.model.User;
 import com.br.meli.springchallenge.domain.repository.UserRepository;
@@ -7,7 +8,7 @@ import com.br.meli.springchallenge.dto.PostDTO;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProductConverterImpl implements ProductConverter{
+public class ProductConverterImpl implements ProductConverter {
     private UserRepository userRepository;
 
     private ProductConverterImpl(UserRepository userRepository) {

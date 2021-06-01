@@ -27,15 +27,3 @@ CREATE TABLE post (
   FOREIGN KEY (user_id) references user,
   FOREIGN KEY (product_id) references product,
  );
-
-
-@Id
-    @GeneratedValue
-    private int id;
-
-    @OneToOne
-    private Product product;
-
-    private int category;
-
-    private Double price;

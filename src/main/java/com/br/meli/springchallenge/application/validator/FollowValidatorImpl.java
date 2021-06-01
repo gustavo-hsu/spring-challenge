@@ -1,11 +1,12 @@
-package com.br.meli.springchallenge.application;
+package com.br.meli.springchallenge.application.validator;
 
+import com.br.meli.springchallenge.application.validator.FollowValidator;
 import com.br.meli.springchallenge.domain.repository.FollowerRepository;
 import com.br.meli.springchallenge.domain.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class FollowValidatorImpl implements FollowValidator{
+public class FollowValidatorImpl implements FollowValidator {
     private FollowerRepository followerRepository;
     private UserRepository userRepository;
 
@@ -29,7 +30,7 @@ public class FollowValidatorImpl implements FollowValidator{
         }
 
         if(followerRepository.findByIds(userId, userIdToFollow) != null) {
-            throw new IllegalArgumentException("Seller already followed by this user.");
+            throw new IllegalArgumentException("User already follow this seller");
         }
     }
 }
