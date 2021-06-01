@@ -1,11 +1,13 @@
 package com.br.meli.springchallenge.application;
 
 import com.br.meli.springchallenge.domain.model.Post;
-import com.br.meli.springchallenge.domain.model.Product;
 import com.br.meli.springchallenge.domain.repository.PostRepository;
 import com.br.meli.springchallenge.domain.repository.ProductRepository;
-import com.br.meli.springchallenge.dto.PostRequest;
+import com.br.meli.springchallenge.dto.PostDTO;
+import com.br.meli.springchallenge.dto.PostsResponse;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -20,12 +22,17 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public Post createPost(PostRequest postRequest) {
-        Post post = productConverter.fromPostRequestToPostEntity(postRequest);
-
-        Product product = postRequest.toProductEntity();
-        productRepository.save(product);
-
+    public Post createPost(PostDTO postDTO) {
+        Post post = productConverter.fromPostRequestToPostEntity(postDTO);
         return postRepository.save(post);
+    }
+
+    @Override
+    public PostsResponse getPostsForUser(int userId) {
+       List<Post> postList = postRepository.getPostsByUserId(userId);
+
+       PostsResponse posts = new PostsResponse(userId, postList);
+
+       return posts;
     }
 }
