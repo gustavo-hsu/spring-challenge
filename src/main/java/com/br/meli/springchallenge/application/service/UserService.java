@@ -60,6 +60,6 @@ public class UserService {
     }
 
     public void unfollow(int userId, int userIdToFollow) {
-        //followerRepository.deleteBy(userId, userIdToFollow);
+        followerRepository.deleteByIds(userId, userIdToFollow);
     }
 }
