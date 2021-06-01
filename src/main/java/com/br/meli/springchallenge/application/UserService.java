@@ -6,6 +6,7 @@ import com.br.meli.springchallenge.domain.model.Follower;
 import com.br.meli.springchallenge.domain.model.User;
 import com.br.meli.springchallenge.domain.repository.FollowerRepository;
 import com.br.meli.springchallenge.domain.repository.UserRepository;
+import com.br.meli.springchallenge.dto.FollowingListResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,6 +28,7 @@ public class UserService {
 
         User follower = userRepository.findById(userId).get();
         User toFollow =  userRepository.findById(userIdToFollow).get();
+
         followerRepository.save(new Follower(follower, toFollow));
     }
 
@@ -46,7 +48,18 @@ public class UserService {
         return followerList;
     }
 
+    public FollowingListResponse getFollowingList(int userId) {
+        User user =  userRepository.findById(userId).get();
+
+        FollowingListResponse followerList = new FollowingListResponse(user);
+        return followerList;
+    }
+
     public List<User> getAll() {
         return userRepository.findAll();
+    }
+
+    public void unfollow(int userId, int userIdToFollow) {
+        //followerRepository.deleteBy(userId, userIdToFollow);
     }
 }

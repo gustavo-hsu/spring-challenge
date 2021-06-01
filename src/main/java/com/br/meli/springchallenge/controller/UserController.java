@@ -4,6 +4,7 @@ import com.br.meli.springchallenge.application.UserService;
 import com.br.meli.springchallenge.dto.FollowerCountResponse;
 import com.br.meli.springchallenge.dto.FollowerListResponse;
 import com.br.meli.springchallenge.domain.model.User;
+import com.br.meli.springchallenge.dto.FollowingListResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,11 +24,17 @@ public class UserController {
     public ResponseEntity follow(@PathVariable int userId, @PathVariable int userIdToFollow) throws Exception {
         userService.follow(userId, userIdToFollow);
 
-        //falta retornar bad request quando dá errado
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @PostMapping("/{userId}/followers/count")
+    @PostMapping("/{userId}/unfollow/{userIdToFollow}")
+    public ResponseEntity unfollow(@PathVariable int userId, @PathVariable int userIdToFollow) throws Exception {
+        userService.unfollow(userId, userIdToFollow);
+
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @GetMapping("/{userId}/followers/count")
     public ResponseEntity getNumberOfFollowers(@PathVariable int userId){
         FollowerCountResponse numberOfFollowers = userService.getNumberOfFollowers(userId);
 
@@ -41,6 +48,12 @@ public class UserController {
         return new ResponseEntity(followerList, HttpStatus.OK);
     }
 
+    @GetMapping("/{userId}/followed/list")
+    public ResponseEntity getFollowedList(@PathVariable int userId){
+        FollowingListResponse followedList = userService.getFollowingList(userId);
+
+        return new ResponseEntity(followedList, HttpStatus.OK);
+    }
 
     @PostMapping
     public User create(@RequestBody User user){

@@ -12,17 +12,17 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-public class FollowerListResponse {
+public class FollowingListResponse {
     private int userId;
     private String userName;
-    private List<FollowDTO> followers = new ArrayList<>();
+    private List<FollowDTO> followed = new ArrayList<>();
 
-    public FollowerListResponse(User user) {
+    public FollowingListResponse(User user) {
         this.userId = user.getId();
         this.userName = user.getName();
 
-        for (Follower follower : user.getFollowers()) {
-            this.followers.add(new FollowDTO(follower));
+        for (Follower follower : user.getFollowing()) {
+            this.followed.add(new FollowDTO(follower));
         }
     }
 }
