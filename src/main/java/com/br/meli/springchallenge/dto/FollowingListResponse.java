@@ -21,7 +21,7 @@ public class FollowingListResponse {
         this.userId = user.getId();
         this.userName = user.getName();
 
-        for (Follower follower : user.getFollowers()) {
+        for (Follower follower : user.getFollowing()) {
             this.followed.add(new FollowingDTO(follower));
         }
     }

@@ -1,7 +1,5 @@
 package com.br.meli.springchallenge.domain.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -16,30 +14,30 @@ public class Follower {
 
     @ManyToOne
     @JoinColumn(name="from_user_id")
-    private User follower;
+    private User following;
 
     @ManyToOne
     @JoinColumn(name="to_user_id")
-    private User following;
+    private User follower;
 
-    public Follower(User follower, User following) {
-        this.follower = follower;
+    public Follower(User following, User follower) {
         this.following = following;
+        this.follower = follower;
     }
 
     public int getFollowerId() {
-        return this.follower.getId();
-    }
-
-    public String getFollowerName() {
-        return this.follower.getName();
-    }
-
-    public int getFollowingId() {
         return this.following.getId();
     }
 
-    public String getFollowingName() {
+    public String getFollowerName() {
         return this.following.getName();
+    }
+
+    public int getFollowingId() {
+        return this.follower.getId();
+    }
+
+    public String getFollowingName() {
+        return this.follower.getName();
     }
 }
