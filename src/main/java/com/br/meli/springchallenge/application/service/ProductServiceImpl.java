@@ -51,10 +51,16 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public PromotionCountResponse getPromotionProducts(int userId) {
+    public PromotionCountResponse getPromotionProductsCount(int userId) {
         User user = userRepository.findById(userId).orElse(null);
 
         return new PromotionCountResponse(userId, user.getName(), productRepository.getNumberOfPromotionByUserId(userId));
+    }
+
+    @Override
+    public PostsResponse getPostsFromUser(int userId) {
+        List<Post> postList = postRepository.getPostsBySellerId(userId);
+        return new PostsResponse(userId, postList);
     }
 
     @Override

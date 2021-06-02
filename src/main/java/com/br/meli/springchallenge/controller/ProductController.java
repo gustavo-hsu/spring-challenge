@@ -42,7 +42,14 @@ public class ProductController {
 
     @GetMapping("/{userId}/countPromo")
     public ResponseEntity listPostsForUser(@PathVariable int userId){
-        PromotionCountResponse countResponse = productService.getPromotionProducts(userId);
+        PromotionCountResponse countResponse = productService.getPromotionProductsCount(userId);
+
+        return new ResponseEntity(countResponse, HttpStatus.OK);
+    }
+
+    @GetMapping("/{userId}/list")
+    public ResponseEntity listPostsFromUser(@PathVariable int userId){
+        PostsResponse countResponse = productService.getPostsFromUser(userId);
 
         return new ResponseEntity(countResponse, HttpStatus.OK);
     }

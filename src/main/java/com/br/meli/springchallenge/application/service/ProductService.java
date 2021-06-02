@@ -15,5 +15,7 @@ public interface ProductService {
 
     void createPromoPost(PostDTO postDTO);
 
-    PromotionCountResponse getPromotionProducts(int userId);
+    PromotionCountResponse getPromotionProductsCount(int userId);
+
+    PostsResponse getPostsFromUser(int userId);
 }

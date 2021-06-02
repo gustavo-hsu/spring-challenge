@@ -15,4 +15,9 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
             "AND p.date >= (CURRENT_DATE() - 14) "+
             "AND p.date <= CURRENT_DATE()")
     List<Post> getPostsByUserId(int userId, Sort sort);
+
+    @Query(value = "select p from Post p join Product pr on p.product.id = pr.id where " +
+            "p.user = (select u from User u where id = ?1) " +
+            "and pr.hasPromo is true")
+    List<Post> getPostsBySellerId(int userId);
 }
