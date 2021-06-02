@@ -17,7 +17,7 @@ import java.util.Date;
 @Getter
 public class Post {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
 
     @OneToOne

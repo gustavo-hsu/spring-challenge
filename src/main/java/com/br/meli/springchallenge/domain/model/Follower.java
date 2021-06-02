@@ -9,7 +9,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Follower {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
 
     @ManyToOne
