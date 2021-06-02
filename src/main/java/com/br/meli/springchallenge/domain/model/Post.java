@@ -44,8 +44,10 @@ public class Post {
                         product.getColor(),
                         product.getNotes()
                 ),
-                this.product.getCategory().getId(),
-                this.product.getPrice()
+                product.getCategory().getId(),
+                product.getPrice(),
+                product.isHasPromo(),
+                product.getDiscount()
         );
     }
 }

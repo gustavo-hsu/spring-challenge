@@ -4,6 +4,7 @@ import com.br.meli.springchallenge.domain.model.Post;
 import com.br.meli.springchallenge.domain.model.Product;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,6 +15,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @JsonInclude
+@AllArgsConstructor
 public class PostDTO {
     private int userId;
     private int idPost;
@@ -22,6 +24,8 @@ public class PostDTO {
     private DetailDTO detail;
     private int category;
     private Double price;
+    private boolean hasPromo = false;
+    private double discount = 0D;
 
     public PostDTO(int userId, int idPost, Date date, DetailDTO detail, int category, Double price) {
         this.userId = userId;
@@ -51,7 +55,9 @@ public class PostDTO {
                         this.detail.getBrand(),
                         this.detail.getColor(),
                         this.detail.getNotes(),
-                        this.price
+                        this.price,
+                        this.hasPromo,
+                        this.discount
                 );
 
         return product;

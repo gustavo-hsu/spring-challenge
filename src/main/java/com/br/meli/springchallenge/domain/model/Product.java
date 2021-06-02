@@ -23,8 +23,10 @@ public class Product {
     @OneToOne
     private Category category;
     private Double price;
+    private boolean hasPromo = false;
+    private double discount = 0D;
 
-    public Product(int id, String productName, String type, String brand, String color, String notes, Double price) {
+    public Product(int id, String productName, String type, String brand, String color, String notes, Double price, boolean hasPromo, double discount) {
         this.id = id;
         this.productName = productName;
         this.type = type;
@@ -32,5 +34,7 @@ public class Product {
         this.color = color;
         this.notes = notes;
         this.price = price;
+        this.hasPromo = hasPromo;
+        this.discount = discount;
     }
 }
