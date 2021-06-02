@@ -1,5 +1,6 @@
 package com.br.meli.springchallenge.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,10 +27,12 @@ public class User {
     private boolean isSeller = true;
 
     @Nullable
+    @JsonIgnore
     @OneToMany(mappedBy="follower")
     private List<Follower> followers;
 
     @Nullable
+    @JsonIgnore
     @OneToMany(mappedBy="following")
     private List<Follower> following;
 

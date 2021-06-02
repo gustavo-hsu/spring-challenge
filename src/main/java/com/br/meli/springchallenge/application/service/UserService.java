@@ -30,7 +30,7 @@ public class UserService {
         User follower = userRepository.findById(userId).get();
         User toFollow =  userRepository.findById(userIdToFollow).get();
 
-        followerRepository.save(new Follower(toFollow, follower));
+        followerRepository.save(new Follower(follower, toFollow));
     }
 
     public void unfollow(int userId, int userIdToFollow) {

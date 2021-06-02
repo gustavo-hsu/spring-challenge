@@ -24,11 +24,11 @@ public class ProductConverterImpl implements ProductConverter {
         Category category = categoryRepository.findById(request.getCategory()).orElse(null);
 
         if (user == null) {
-            throw new IllegalArgumentException("User with id " + request.getUserId() + "not found");
+            throw new IllegalArgumentException("User with id " + request.getUserId() + " not found");
         }
 
         if(category == null) {
-            throw new IllegalArgumentException("Category with id " + request.getCategory() + "not found");
+            throw new IllegalArgumentException("Category with id " + request.getCategory() + " not found");
         }
 
         Post post = request.toPostEntity();
