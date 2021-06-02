@@ -28,7 +28,7 @@ public class FollowValidatorImpl implements FollowValidator {
 
         User userToFollow =  userRepository.findById(userIdToFollow).orElse(null);
 
-        if(userToFollow.equals(null)) {
+        if(userToFollow == null) {
             throw new IllegalArgumentException("User with id " + userIdToFollow + " not found.");
         }
 

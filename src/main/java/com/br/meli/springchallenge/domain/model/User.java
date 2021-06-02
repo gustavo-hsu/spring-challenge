@@ -1,16 +1,13 @@
 package com.br.meli.springchallenge.domain.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+import java.util.Comparator;
 import java.util.List;
 
 @Entity
@@ -49,6 +46,28 @@ public class User {
         this.name = name;
         this.isSeller = isSeller;
     }
+
+    public List<Follower> setFollowersOrderByName(String order) {
+        if (order == null || order.toLowerCase().contains("asc")) {
+            this.followers.sort(Comparator.comparing(Follower::getFollowerName));
+        } else {
+            this.followers.sort(Comparator.comparing(Follower::getFollowerName).reversed());
+        }
+
+        return this.followers;
+    }
+
+    public List<Follower> setFollowingOrderByName(String order) {
+        if (order == null || order.toLowerCase().contains("asc")) {
+            this.following.sort(Comparator.comparing(Follower::getFollowingName));
+        } else {
+            this.following.sort(Comparator.comparing(Follower::getFollowingName).reversed());
+        }
+
+        return following;
+    }
+
+
 
     public int countFollowers() {
         return this.followers.size();

@@ -42,17 +42,16 @@ public class UserService {
         return new FollowerCountResponse(user.getId(), user.getName(), user.countFollowers());
     }
 
-    public FollowerListResponse getFollowerList(int userId) {
+    public FollowerListResponse getFollowerList(int userId, String order) {
         User user =  userRepository.findById(userId).get();
-
+        user.setFollowersOrderByName(order);
         return new FollowerListResponse(user);
     }
 
-    public FollowingListResponse getFollowingList(int userId) {
+    public FollowingListResponse getFollowingList(int userId, String order) {
         User user =  userRepository.findById(userId).get();
-
-        FollowingListResponse followerList = new FollowingListResponse(user);
-        return followerList;
+        user.setFollowingOrderByName(order);
+        return new FollowingListResponse(user);
     }
 
     public List<User> getAll() {

@@ -40,15 +40,15 @@ public class UserController {
     }
 
     @GetMapping("/{userId}/followers/list")
-    public ResponseEntity getFollowersList(@PathVariable int userId){
-        FollowerListResponse followerList = userService.getFollowerList(userId);
+    public ResponseEntity getFollowersList(@PathVariable int userId, @RequestParam(required = false) String order){
+        FollowerListResponse followerList = userService.getFollowerList(userId, order);
 
         return new ResponseEntity(followerList, HttpStatus.OK);
     }
 
     @GetMapping("/{userId}/followed/list")
-    public ResponseEntity getFollowedList(@PathVariable int userId){
-        FollowingListResponse followedList = userService.getFollowingList(userId);
+    public ResponseEntity getFollowedList(@PathVariable int userId, @RequestParam(required = false) String order){
+        FollowingListResponse followedList = userService.getFollowingList(userId, order);
 
         return new ResponseEntity(followedList, HttpStatus.OK);
     }
