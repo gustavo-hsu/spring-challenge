@@ -29,9 +29,11 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public PostsResponse getPostsForUser(int userId, String order) {
-        Sort sort = order.equals("date_asc") ? Sort.by("date").ascending() : Sort.by("date").descending();
-
-        List<Post> postList = postRepository.getPostsByUserId(userId, sort);
+        List<Post> postList = postRepository.getPostsByUserId(userId, setOrderByDate(order));
         return new PostsResponse(userId, postList);
+    }
+
+    private Sort setOrderByDate(String order) {
+        return order.equals("date_asc") ? Sort.by("date").ascending() : Sort.by("date").descending();
     }
 }
