@@ -33,8 +33,8 @@ public class UserService {
         followerRepository.save(new Follower(toFollow, follower));
     }
 
-    public User create(User user) {
-       return userRepository.save(user);
+    public void unfollow(int userId, int userIdToFollow) {
+        followerRepository.deleteByIds(userId, userIdToFollow);
     }
 
     public FollowerCountResponse getNumberOfFollowers(int userId) {
@@ -54,11 +54,11 @@ public class UserService {
         return new FollowingListResponse(user);
     }
 
-    public List<User> getAll() {
-        return userRepository.findAll();
+    public User create(User user) {
+        return userRepository.save(user);
     }
 
-    public void unfollow(int userId, int userIdToFollow) {
-        followerRepository.deleteByIds(userId, userIdToFollow);
+    public List<User> getAll() {
+        return userRepository.findAll();
     }
 }
