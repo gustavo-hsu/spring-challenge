@@ -28,12 +28,12 @@ public class User {
 
     @Nullable
     @JsonIgnore
-    @OneToMany(mappedBy="follower")
+    @OneToMany(mappedBy="following")
     private List<Follower> followers;
 
     @Nullable
     @JsonIgnore
-    @OneToMany(mappedBy="following")
+    @OneToMany(mappedBy="follower")
     private List<Follower> following;
 
     public User(String name) {

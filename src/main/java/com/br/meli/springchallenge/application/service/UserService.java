@@ -28,9 +28,9 @@ public class UserService {
         followValidator.validate(userId, userIdToFollow);
 
         User follower = userRepository.findById(userId).get();
-        User toFollow =  userRepository.findById(userIdToFollow).get();
+        User following =  userRepository.findById(userIdToFollow).get();
 
-        followerRepository.save(new Follower(follower, toFollow));
+        followerRepository.save(new Follower(following, follower));
     }
 
     public void unfollow(int userId, int userIdToFollow) {

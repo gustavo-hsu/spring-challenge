@@ -13,12 +13,12 @@ public class Follower {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name="following_user_id")
-    private User following;
-
-    @ManyToOne
     @JoinColumn(name="follower_user_id")
     private User follower;
+
+    @ManyToOne
+    @JoinColumn(name="following_user_id")
+    private User following;
 
     public Follower(User following, User follower) {
         this.following = following;
@@ -26,18 +26,18 @@ public class Follower {
     }
 
     public int getFollowerId() {
-        return this.following.getId();
-    }
-
-    public String getFollowerName() {
-        return this.following.getName();
-    }
-
-    public int getFollowingId() {
         return this.follower.getId();
     }
 
-    public String getFollowingName() {
+    public String getFollowerName() {
         return this.follower.getName();
+    }
+
+    public int getFollowingId() {
+        return this.following.getId();
+    }
+
+    public String getFollowingName() {
+        return this.following.getName();
     }
 }
