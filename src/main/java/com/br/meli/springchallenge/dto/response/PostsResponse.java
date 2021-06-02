@@ -1,6 +1,7 @@
-package com.br.meli.springchallenge.dto;
+package com.br.meli.springchallenge.dto.response;
 
 import com.br.meli.springchallenge.domain.model.Post;
+import com.br.meli.springchallenge.dto.PostDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

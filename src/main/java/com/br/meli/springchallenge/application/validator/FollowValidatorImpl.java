@@ -1,6 +1,5 @@
 package com.br.meli.springchallenge.application.validator;
 
-import com.br.meli.springchallenge.application.validator.FollowValidator;
 import com.br.meli.springchallenge.domain.model.User;
 import com.br.meli.springchallenge.domain.repository.FollowerRepository;
 import com.br.meli.springchallenge.domain.repository.UserRepository;

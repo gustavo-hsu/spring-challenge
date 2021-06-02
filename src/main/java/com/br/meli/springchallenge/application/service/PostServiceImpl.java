@@ -5,7 +5,7 @@ import com.br.meli.springchallenge.domain.model.Post;
 import com.br.meli.springchallenge.domain.repository.PostRepository;
 import com.br.meli.springchallenge.domain.repository.ProductRepository;
 import com.br.meli.springchallenge.dto.PostDTO;
-import com.br.meli.springchallenge.dto.PostsResponse;
+import com.br.meli.springchallenge.dto.response.PostsResponse;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 

@@ -51,7 +51,6 @@ public class PostDTO {
                         this.detail.getBrand(),
                         this.detail.getColor(),
                         this.detail.getNotes(),
-                        this.category,
                         this.price
                 );
 

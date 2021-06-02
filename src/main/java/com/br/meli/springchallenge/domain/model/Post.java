@@ -44,7 +44,7 @@ public class Post {
                         product.getColor(),
                         product.getNotes()
                 ),
-                this.product.getCategory(),
+                this.product.getCategory().getId(),
                 this.product.getPrice()
         );
     }

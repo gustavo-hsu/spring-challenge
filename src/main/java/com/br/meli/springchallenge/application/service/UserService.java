@@ -1,13 +1,13 @@
 package com.br.meli.springchallenge.application.service;
 
 import com.br.meli.springchallenge.application.validator.FollowValidator;
-import com.br.meli.springchallenge.dto.FollowerCountResponse;
-import com.br.meli.springchallenge.dto.FollowerListResponse;
+import com.br.meli.springchallenge.dto.response.FollowerCountResponse;
+import com.br.meli.springchallenge.dto.response.FollowerListResponse;
 import com.br.meli.springchallenge.domain.model.Follower;
 import com.br.meli.springchallenge.domain.model.User;
 import com.br.meli.springchallenge.domain.repository.FollowerRepository;
 import com.br.meli.springchallenge.domain.repository.UserRepository;
-import com.br.meli.springchallenge.dto.FollowingListResponse;
+import com.br.meli.springchallenge.dto.response.FollowingListResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,7 +30,7 @@ public class UserService {
         User follower = userRepository.findById(userId).get();
         User toFollow =  userRepository.findById(userIdToFollow).get();
 
-        followerRepository.save(new Follower(follower, toFollow));
+        followerRepository.save(new Follower(toFollow, follower));
     }
 
     public User create(User user) {

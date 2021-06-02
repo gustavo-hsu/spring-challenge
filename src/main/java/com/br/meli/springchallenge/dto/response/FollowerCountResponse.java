@@ -1,4 +1,4 @@
-package com.br.meli.springchallenge.dto;
+package com.br.meli.springchallenge.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

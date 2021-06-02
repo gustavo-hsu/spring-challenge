@@ -20,17 +20,17 @@ public class Product {
     private String brand;
     private String color;
     private String notes;
-    private int category;
+    @OneToOne
+    private Category category;
     private Double price;
 
-    public Product(int id, String productName, String type, String brand, String color, String notes, int category, Double price) {
+    public Product(int id, String productName, String type, String brand, String color, String notes, Double price) {
         this.id = id;
         this.productName = productName;
         this.type = type;
         this.brand = brand;
         this.color = color;
         this.notes = notes;
-        this.category = category;
         this.price = price;
     }
 }
