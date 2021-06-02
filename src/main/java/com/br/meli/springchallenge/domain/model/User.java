@@ -26,6 +26,8 @@ public class User {
 
     private String name;
 
+    private boolean isSeller = true;
+
     @Nullable
     @OneToMany(mappedBy="follower")
     private List<Follower> followers;
@@ -41,6 +43,11 @@ public class User {
     public User(int id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public User(String name, boolean isSeller) {
+        this.name = name;
+        this.isSeller = isSeller;
     }
 
     public int countFollowers() {

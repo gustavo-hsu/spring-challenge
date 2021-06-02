@@ -14,12 +14,10 @@ import java.util.List;
 @Service
 public class PostServiceImpl implements PostService {
     private PostRepository postRepository;
-    private ProductRepository productRepository;
     private ProductConverter productConverter;
 
     public PostServiceImpl(PostRepository postRepository, ProductRepository productRepository, ProductConverter productConverter) {
         this.postRepository = postRepository;
-        this.productRepository = productRepository;
         this.productConverter = productConverter;
     }
 

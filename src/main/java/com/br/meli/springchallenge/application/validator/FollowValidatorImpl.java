@@ -1,6 +1,7 @@
 package com.br.meli.springchallenge.application.validator;
 
 import com.br.meli.springchallenge.application.validator.FollowValidator;
+import com.br.meli.springchallenge.domain.model.User;
 import com.br.meli.springchallenge.domain.repository.FollowerRepository;
 import com.br.meli.springchallenge.domain.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -25,12 +26,18 @@ public class FollowValidatorImpl implements FollowValidator {
             throw new IllegalArgumentException("User with id " + userId + " not found.");
         }
 
-        if(userRepository.findById(userIdToFollow).isEmpty()) {
+        User userToFollow =  userRepository.findById(userIdToFollow).orElse(null);
+
+        if(userToFollow.equals(null)) {
             throw new IllegalArgumentException("User with id " + userIdToFollow + " not found.");
         }
 
+        if(!userToFollow.isSeller()) {
+            throw new IllegalArgumentException("Can not follow user with id " + userIdToFollow + " he is not a seller.");
+        }
+
         if(followerRepository.findByIds(userId, userIdToFollow) != null) {
-            throw new IllegalArgumentException("User already follow this seller");
+            throw new IllegalArgumentException("User already follow this seller.");
         }
     }
 }
