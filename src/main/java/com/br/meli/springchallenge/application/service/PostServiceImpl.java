@@ -6,6 +6,7 @@ import com.br.meli.springchallenge.domain.repository.PostRepository;
 import com.br.meli.springchallenge.domain.repository.ProductRepository;
 import com.br.meli.springchallenge.dto.PostDTO;
 import com.br.meli.springchallenge.dto.PostsResponse;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,11 +30,10 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public PostsResponse getPostsForUser(int userId) {
-       List<Post> postList = postRepository.getPostsByUserId(userId);
+    public PostsResponse getPostsForUser(int userId, String order) {
+        Sort sort = order.equals("date_asc") ? Sort.by("date").ascending() : Sort.by("date").descending();
 
-       PostsResponse posts = new PostsResponse(userId, postList);
-
-       return posts;
+        List<Post> postList = postRepository.getPostsByUserId(userId, sort);
+        return new PostsResponse(userId, postList);
     }
 }

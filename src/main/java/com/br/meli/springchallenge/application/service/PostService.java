@@ -7,5 +7,5 @@ import com.br.meli.springchallenge.dto.PostsResponse;
 public interface PostService {
     Post createPost(PostDTO postDTO);
 
-    PostsResponse getPostsForUser(int userId);
+    PostsResponse getPostsForUser(int userId, String dateAsc);
 }

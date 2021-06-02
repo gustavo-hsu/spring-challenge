@@ -14,11 +14,9 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     private UserService userService;
-
     public UserController(UserService userService) {
         this.userService = userService;
     }
-
 
     @PostMapping("/{userId}/follow/{userIdToFollow}")
     public ResponseEntity follow(@PathVariable int userId, @PathVariable int userIdToFollow) throws Exception {
