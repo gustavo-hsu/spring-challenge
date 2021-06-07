@@ -5,8 +5,8 @@
 
 ```
 { 
-    "name": "User1", <br>
-    "seller": true <br>
+    "name": "User1", 
+    "seller": true
 }
 ```
 <h3> US 01: Follow a seller </h3>
@@ -107,3 +107,10 @@ GET
 
 <h3> US 12: Get all promotion product from a seller </h3>
 <h4> GET /products/{userId}/list</h4>
+
+_________
+<h1> GO MELI !</h1>
+
+![](src/main/resources/images/img.png)
+
+Built by @gustavo-hsu for the bootcamp challenge
