@@ -47,7 +47,7 @@ public class UserValidatorImpl implements UserValidator {
         }
 
         if(!user.isSeller()) {
-            throw new NotFoundApiException("The user is not a seller");
+            throw new BadRequestApiException("The user is not a seller");
         }
     }
 
