@@ -5,18 +5,18 @@ import com.br.meli.springchallenge.domain.model.Post;
 import com.br.meli.springchallenge.dto.PostDTO;
 import com.br.meli.springchallenge.dto.response.PostsResponse;
 import com.br.meli.springchallenge.dto.response.PromotionCountResponse;
-import com.br.meli.springchallenge.exceptions.BadRequestApiException;
+import com.br.meli.springchallenge.exceptions.ApiException;
 
 public interface ProductService {
-    Post createPost(PostDTO postDTO) throws BadRequestApiException;
+    Post createPost(PostDTO postDTO) throws ApiException;
 
     PostsResponse getPostsForUser(int userId, String dateAsc);
 
     Category createCategory(Category category);
 
-    void createPromoPost(PostDTO postDTO) throws BadRequestApiException;
+    void createPromoPost(PostDTO postDTO) throws ApiException;
 
-    PromotionCountResponse getPromotionProductsCount(int userId) throws BadRequestApiException;
+    PromotionCountResponse getPromotionProductsCount(int userId) throws ApiException;
 
     PostsResponse getPostsFromUser(int userId);
 }

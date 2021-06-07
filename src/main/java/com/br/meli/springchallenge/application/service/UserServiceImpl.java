@@ -8,7 +8,7 @@ import com.br.meli.springchallenge.domain.model.User;
 import com.br.meli.springchallenge.domain.repository.FollowerRepository;
 import com.br.meli.springchallenge.domain.repository.UserRepository;
 import com.br.meli.springchallenge.dto.response.FollowingListResponse;
-import com.br.meli.springchallenge.exceptions.BadRequestApiException;
+import com.br.meli.springchallenge.exceptions.ApiException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
     private FollowerRepository followerRepository;
     private UserValidator userValidator;
 
-    public void follow(int userId, int userIdToFollow) throws BadRequestApiException {
+    public void follow(int userId, int userIdToFollow) throws ApiException {
         userValidator.validate(userId, userIdToFollow);
 
         User follower = userRepository.findById(userId).get();
@@ -34,20 +34,20 @@ public class UserServiceImpl implements UserService {
         followerRepository.deleteByIds(userId, userIdToFollow);
     }
 
-    public FollowerCountResponse getNumberOfFollowers(int userId) throws BadRequestApiException {
+    public FollowerCountResponse getNumberOfFollowers(int userId) throws ApiException {
         User user = userRepository.findById(userId).orElse(null);
         userValidator.validate(user);
         return new FollowerCountResponse(user.getId(), user.getName(), user.countFollowers());
     }
 
-    public FollowerListResponse getFollowerList(int userId, String order) throws BadRequestApiException {
+    public FollowerListResponse getFollowerList(int userId, String order) throws ApiException {
         User user =  userRepository.findById(userId).orElse(null);
         userValidator.validateSeller(user);
         user.setFollowersOrderByName(order);
         return new FollowerListResponse(user);
     }
 
-    public FollowingListResponse getFollowingList(int userId, String order) throws BadRequestApiException {
+    public FollowingListResponse getFollowingList(int userId, String order) throws ApiException {
         User user =  userRepository.findById(userId).orElse(null);
         userValidator.validate(user);
         user.setFollowingOrderByName(order);

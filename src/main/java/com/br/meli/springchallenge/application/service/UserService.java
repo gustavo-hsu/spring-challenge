@@ -5,20 +5,20 @@ import com.br.meli.springchallenge.domain.model.User;
 import com.br.meli.springchallenge.dto.response.FollowerCountResponse;
 import com.br.meli.springchallenge.dto.response.FollowerListResponse;
 import com.br.meli.springchallenge.dto.response.FollowingListResponse;
-import com.br.meli.springchallenge.exceptions.BadRequestApiException;
+import com.br.meli.springchallenge.exceptions.ApiException;
 
 import java.util.List;
 
  public interface UserService {
-     void follow(int userId, int userIdToFollow) throws BadRequestApiException;
+     void follow(int userId, int userIdToFollow) throws ApiException;
 
      void unfollow(int userId, int userIdToFollow);
 
-     FollowerCountResponse getNumberOfFollowers(int userId) throws BadRequestApiException;
+     FollowerCountResponse getNumberOfFollowers(int userId) throws ApiException;
 
-     FollowerListResponse getFollowerList(int userId, String order) throws BadRequestApiException;
+     FollowerListResponse getFollowerList(int userId, String order) throws ApiException;
 
-     FollowingListResponse getFollowingList(int userId, String order) throws BadRequestApiException;
+     FollowingListResponse getFollowingList(int userId, String order) throws ApiException;
 
      User create(User user);
 

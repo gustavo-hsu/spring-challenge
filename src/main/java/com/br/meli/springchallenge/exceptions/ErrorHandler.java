@@ -1,5 +1,6 @@
 package com.br.meli.springchallenge.exceptions;
 
+import org.aspectj.weaver.ast.Not;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,13 @@ public class ErrorHandler extends ResponseEntityExceptionHandler {
         String responseBody = ex.toJson();
 
         return handleExceptionInternal(ex, responseBody, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+    }
+
+    @ExceptionHandler(value = { NotFoundApiException.class})
+    protected ResponseEntity<Object> handleBadRequestException(NotFoundApiException ex, WebRequest request) {
+        String responseBody = ex.toJson();
+
+        return handleExceptionInternal(ex, responseBody, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
     }
 
     @ExceptionHandler(value = { Exception.class})
