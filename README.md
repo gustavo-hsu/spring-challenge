@@ -21,7 +21,7 @@ ___
 <h4> GET /users/{userId}/followers/list </h4>
 
 ___
-<h3> US 04: Get the list of followed sellers of a user </h3>
+<h3> US 04: Get the list of followed sellers from a user </h3>
 <h4> GET /users/{userId}/followed/list </h4>
 
 ___
