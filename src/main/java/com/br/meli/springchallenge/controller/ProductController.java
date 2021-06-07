@@ -42,7 +42,7 @@ public class ProductController {
     }
 
     @GetMapping("/{userId}/countPromo")
-    public ResponseEntity listPostsForUser(@PathVariable int userId){
+    public ResponseEntity listPostsForUser(@PathVariable int userId) throws BadRequestApiException {
         PromotionCountResponse countResponse = productService.getPromotionProductsCount(userId);
 
         return new ResponseEntity(countResponse, HttpStatus.OK);

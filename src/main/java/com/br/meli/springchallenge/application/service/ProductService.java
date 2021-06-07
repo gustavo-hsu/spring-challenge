@@ -16,7 +16,7 @@ public interface ProductService {
 
     void createPromoPost(PostDTO postDTO) throws BadRequestApiException;
 
-    PromotionCountResponse getPromotionProductsCount(int userId);
+    PromotionCountResponse getPromotionProductsCount(int userId) throws BadRequestApiException;
 
     PostsResponse getPostsFromUser(int userId);
 }

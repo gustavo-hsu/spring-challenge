@@ -1,6 +1,7 @@
 package com.br.meli.springchallenge.application.service;
 
 import com.br.meli.springchallenge.application.converter.ProductConverter;
+import com.br.meli.springchallenge.application.validator.UserValidator;
 import com.br.meli.springchallenge.domain.model.Category;
 import com.br.meli.springchallenge.domain.model.Post;
 import com.br.meli.springchallenge.domain.model.User;
@@ -24,19 +25,22 @@ public class ProductServiceImpl implements ProductService {
     private ProductConverter productConverter;
     private ProductRepository productRepository;
     private UserRepository userRepository;
+    private UserValidator userValidator;
 
     public ProductServiceImpl(
             PostRepository postRepository,
             CategoryRepository categoryRepository,
             ProductConverter productConverter,
             ProductRepository productRepository,
-            UserRepository userRepository
+            UserRepository userRepository,
+            UserValidator userValidator
     ) {
         this.postRepository = postRepository;
         this.productConverter = productConverter;
         this.categoryRepository = categoryRepository;
         this.productRepository = productRepository;
         this.userRepository = userRepository;
+        this.userValidator = userValidator;
     }
 
     @Override
@@ -52,8 +56,10 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public PromotionCountResponse getPromotionProductsCount(int userId) {
+    public PromotionCountResponse getPromotionProductsCount(int userId) throws BadRequestApiException {
         User user = userRepository.findById(userId).orElse(null);
+
+        userValidator.validate(user);
 
         return new PromotionCountResponse(userId, user.getName(), productRepository.getNumberOfPromotionByUserId(userId));
     }
