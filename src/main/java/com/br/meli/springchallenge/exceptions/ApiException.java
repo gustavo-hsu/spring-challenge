@@ -14,8 +14,7 @@ public class ApiException extends Exception{
 
     private String code;
     private String description;
-    private Integer statusCode = HttpStatus.INTERNAL_SERVER_ERROR.value();
-    private String messageCause;
+    private Integer statusCode = HttpStatus.INTERNAL_SERVER_ERROR.value();;
 
     public ApiException(String description) {
         this.code = "INTERNAL_ERROR";
@@ -33,21 +32,6 @@ public class ApiException extends Exception{
         this.statusCode = statusCode;
     }
 
-    public ApiException(String code, String description, Integer statusCode, Throwable cause) {
-        super(cause);
-        this.code = code;
-        this.description = description;
-        this.statusCode = statusCode;
-        this.messageCause = cause.getMessage();
-    }
-
-    public ApiException(String code, String description, Integer statusCode, String messageCause) {
-        this.code = code;
-        this.description = description;
-        this.statusCode = statusCode;
-        this.messageCause = messageCause;
-    }
-
     public ApiException(String code, String description, Throwable cause) {
         super(cause);
         this.code = code;
@@ -62,11 +46,7 @@ public class ApiException extends Exception{
         exceptionMap.put("message", description);
         exceptionMap.put("status", statusCode);
 
-        if (messageCause != null) {
-            exceptionMap.put("cause", messageCause);
-        }
-
-        return "{" + "\n   error: " + code + ",\n   description: " +
-                    description + ",\n   status: " + statusCode + "\n}";
+        return "{" + "\n   \"error\": \"" + code + "\",\n   \"description\": \"" +
+                    description + "\",\n   \"status\": " + statusCode + "\n}";
     }
 }
