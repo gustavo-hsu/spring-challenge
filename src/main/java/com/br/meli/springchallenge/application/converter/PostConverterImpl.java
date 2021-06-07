@@ -1,6 +1,5 @@
 package com.br.meli.springchallenge.application.converter;
 
-import com.br.meli.springchallenge.application.validator.UserValidator;
 import com.br.meli.springchallenge.domain.model.Category;
 import com.br.meli.springchallenge.domain.model.Post;
 import com.br.meli.springchallenge.domain.model.User;
@@ -15,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class ProductConverterImpl implements ProductConverter {
+public class PostConverterImpl implements PostConverter {
     private UserRepository userRepository;
     private CategoryRepository categoryRepository;
 

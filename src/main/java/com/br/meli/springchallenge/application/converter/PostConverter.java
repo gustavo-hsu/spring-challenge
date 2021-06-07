@@ -5,6 +5,6 @@ import com.br.meli.springchallenge.dto.PostDTO;
 import com.br.meli.springchallenge.exceptions.ApiException;
 import com.br.meli.springchallenge.exceptions.BadRequestApiException;
 
-public interface ProductConverter {
+public interface PostConverter {
     Post fromPostRequestToPostEntity(PostDTO request) throws ApiException;
 }

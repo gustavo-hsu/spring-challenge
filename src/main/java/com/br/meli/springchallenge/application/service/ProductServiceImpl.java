@@ -1,6 +1,6 @@
 package com.br.meli.springchallenge.application.service;
 
-import com.br.meli.springchallenge.application.converter.ProductConverter;
+import com.br.meli.springchallenge.application.converter.PostConverter;
 import com.br.meli.springchallenge.application.validator.UserValidator;
 import com.br.meli.springchallenge.domain.model.Category;
 import com.br.meli.springchallenge.domain.model.Post;
@@ -24,14 +24,14 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
     private PostRepository postRepository;
     private CategoryRepository categoryRepository;
-    private ProductConverter productConverter;
+    private PostConverter postConverter;
     private ProductRepository productRepository;
     private UserRepository userRepository;
     private UserValidator userValidator;
 
     @Override
     public Post createPost(PostDTO postDTO) throws ApiException {
-        Post post = productConverter.fromPostRequestToPostEntity(postDTO);
+        Post post = postConverter.fromPostRequestToPostEntity(postDTO);
         return postRepository.save(post);
     }
 
@@ -63,7 +63,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void createPromoPost(PostDTO postDTO) throws ApiException {
-        Post post = productConverter.fromPostRequestToPostEntity(postDTO);
+        Post post = postConverter.fromPostRequestToPostEntity(postDTO);
         postRepository.save(post);
     }
 
