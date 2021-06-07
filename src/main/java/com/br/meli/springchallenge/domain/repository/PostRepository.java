@@ -18,6 +18,7 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
 
     @Query(value = "select p from Post p join Product pr on p.product.id = pr.id where " +
             "p.user = (select u from User u where id = ?1) " +
-            "and pr.hasPromo is true")
+            "and pr.hasPromo is true " +
+            "order by p.date asc")
     List<Post> getPostsBySellerId(int userId);
 }

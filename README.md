@@ -50,7 +50,7 @@ You probably got an error, because there are none categories created. To create 
 }
  ```
 
-<h3> US 06: Get the post list of sellers followed by the user </h3>
+<h3> US 06: Get the post list of sellers followed by the user (last 2 weeks)  </h3>
 <h4> GET /products/followed/{userId}/list </h4>
 
 
@@ -62,18 +62,18 @@ Examples:
 <br>
 GET
 <br>
-/users/{userId}/followers/list?order=name_asc
-/users/{userId}/followers/list?order=name_desc
-/users/{userId}/followed/list?order=name_asc
-/users/{userId}/followed/list?order=name_desc
+/users/{userId}/followers/list?order=name_asc <br>
+/users/{userId}/followers/list?order=name_desc <br>
+/users/{userId}/followed/list?order=name_asc <br>
+/users/{userId}/followed/list?order=name_desc <br>
 
 <h3> US 09: Order by date asc or desc </h3>
 Examples:
 <br>
 GET
 <br>
-/products/followed/{userId}/list?order=date_asc
-/products/followed/{userId}/list?order=date_desc
+/products/followed/{userId}/list?order=date_asc <br>
+/products/followed/{userId}/list?order=date_desc <br>
 
 <h3> Extra Bonus </h3>
 
@@ -84,7 +84,7 @@ GET
 {
     "userId": 2,
     "id_post": 2,
-    "date": "30-05-2021",
+    "date": "02-06-2021",
     "detail": {
     "product_id": 2,
     "productName": "Cadeira Gamer",
@@ -105,6 +105,3 @@ GET
 
 <h3> US 12: Get all promotion product from a seller </h3>
 <h4> GET /products/{userId}/list</h4>
-
-
-<h2> Postman json </h2>
