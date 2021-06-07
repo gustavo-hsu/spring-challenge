@@ -11,6 +11,7 @@ import com.br.meli.springchallenge.domain.repository.UserRepository;
 import com.br.meli.springchallenge.dto.PostDTO;
 import com.br.meli.springchallenge.dto.response.PostsResponse;
 import com.br.meli.springchallenge.dto.response.PromotionCountResponse;
+import com.br.meli.springchallenge.exceptions.BadRequestApiException;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +40,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Post createPost(PostDTO postDTO) {
+    public Post createPost(PostDTO postDTO) throws BadRequestApiException {
         Post post = productConverter.fromPostRequestToPostEntity(postDTO);
         return postRepository.save(post);
     }
@@ -69,7 +70,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void createPromoPost(PostDTO postDTO) {
+    public void createPromoPost(PostDTO postDTO) throws BadRequestApiException {
         Post post = productConverter.fromPostRequestToPostEntity(postDTO);
         postRepository.save(post);
     }

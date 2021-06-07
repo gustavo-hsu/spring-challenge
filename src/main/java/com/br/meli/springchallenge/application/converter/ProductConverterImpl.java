@@ -6,6 +6,7 @@ import com.br.meli.springchallenge.domain.model.User;
 import com.br.meli.springchallenge.domain.repository.CategoryRepository;
 import com.br.meli.springchallenge.domain.repository.UserRepository;
 import com.br.meli.springchallenge.dto.PostDTO;
+import com.br.meli.springchallenge.exceptions.BadRequestApiException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,16 +20,16 @@ public class ProductConverterImpl implements ProductConverter {
     }
 
     @Override
-    public Post fromPostRequestToPostEntity(PostDTO request) {
+    public Post fromPostRequestToPostEntity(PostDTO request) throws BadRequestApiException {
         User user = userRepository.findById(request.getUserId()).orElse(null);
         Category category = categoryRepository.findById(request.getCategory()).orElse(null);
 
         if (user == null) {
-            throw new IllegalArgumentException("User with id " + request.getUserId() + " not found");
+            throw new BadRequestApiException("User with id " + request.getUserId() + " not found");
         }
 
         if(category == null) {
-            throw new IllegalArgumentException("Category with id " + request.getCategory() + " not found");
+            throw new BadRequestApiException("Category with id " + request.getCategory() + " not found");
         }
 
         Post post = request.toPostEntity();

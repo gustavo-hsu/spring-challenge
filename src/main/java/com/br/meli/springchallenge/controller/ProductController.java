@@ -5,6 +5,7 @@ import com.br.meli.springchallenge.domain.model.Category;
 import com.br.meli.springchallenge.dto.PostDTO;
 import com.br.meli.springchallenge.dto.response.PostsResponse;
 import com.br.meli.springchallenge.dto.response.PromotionCountResponse;
+import com.br.meli.springchallenge.exceptions.BadRequestApiException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,14 +21,14 @@ public class ProductController {
     }
 
     @PostMapping("/newpost")
-    public ResponseEntity createPost(@RequestBody PostDTO postDTO){
+    public ResponseEntity createPost(@RequestBody PostDTO postDTO) throws BadRequestApiException {
         productService.createPost(postDTO);
 
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @PostMapping("/newpromopost")
-    public ResponseEntity createPromoPost(@RequestBody PostDTO postDTO){
+    public ResponseEntity createPromoPost(@RequestBody PostDTO postDTO) throws BadRequestApiException {
         productService.createPromoPost(postDTO);
 
         return new ResponseEntity(HttpStatus.OK);

@@ -1,6 +1,7 @@
 package com.br.meli.springchallenge.controller;
 
 import com.br.meli.springchallenge.application.service.UserService;
+import com.br.meli.springchallenge.application.service.UserServiceImpl;
 import com.br.meli.springchallenge.dto.response.FollowerCountResponse;
 import com.br.meli.springchallenge.dto.response.FollowerListResponse;
 import com.br.meli.springchallenge.domain.model.User;
@@ -27,7 +28,7 @@ public class UserController {
     }
 
     @PostMapping("/{userId}/unfollow/{userIdToFollow}")
-    public ResponseEntity unfollow(@PathVariable int userId, @PathVariable int userIdToFollow) throws Exception {
+    public ResponseEntity unfollow(@PathVariable int userId, @PathVariable int userIdToFollow) {
         userService.unfollow(userId, userIdToFollow);
 
         return new ResponseEntity(HttpStatus.OK);
