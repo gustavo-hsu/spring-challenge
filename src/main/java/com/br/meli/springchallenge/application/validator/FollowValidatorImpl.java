@@ -3,6 +3,7 @@ package com.br.meli.springchallenge.application.validator;
 import com.br.meli.springchallenge.domain.model.User;
 import com.br.meli.springchallenge.domain.repository.FollowerRepository;
 import com.br.meli.springchallenge.domain.repository.UserRepository;
+import com.br.meli.springchallenge.exceptions.BadRequestApiException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,27 +17,27 @@ public class FollowValidatorImpl implements FollowValidator {
     }
 
     @Override
-    public void validate(int userId, int userIdToFollow) {
+    public void validate(int userId, int userIdToFollow) throws BadRequestApiException {
         if(userId == userIdToFollow) {
-            throw new IllegalArgumentException("A user can not follow himself.");
+            throw new BadRequestApiException("A user can not follow himself");
         }
 
         if(userRepository.findById(userId).isEmpty()) {
-            throw new IllegalArgumentException("User with id " + userId + " not found.");
+            throw new BadRequestApiException("User with id " + userId + " not found");
         }
 
         User userToFollow =  userRepository.findById(userIdToFollow).orElse(null);
 
         if(userToFollow == null) {
-            throw new IllegalArgumentException("User with id " + userIdToFollow + " not found.");
+            throw new BadRequestApiException("User with id " + userIdToFollow + " not found");
         }
 
         if(!userToFollow.isSeller()) {
-            throw new IllegalArgumentException("Can not follow user with id " + userIdToFollow + " he is not a seller.");
+            throw new BadRequestApiException("Can not follow user with id " + userIdToFollow + " he is not a seller");
         }
 
         if(followerRepository.findByIds(userId, userIdToFollow) != null) {
-            throw new IllegalArgumentException("User already follow this seller.");
+            throw new BadRequestApiException("User already follow this seller");
         }
     }
 }

@@ -8,6 +8,7 @@ import com.br.meli.springchallenge.domain.model.User;
 import com.br.meli.springchallenge.domain.repository.FollowerRepository;
 import com.br.meli.springchallenge.domain.repository.UserRepository;
 import com.br.meli.springchallenge.dto.response.FollowingListResponse;
+import com.br.meli.springchallenge.exceptions.BadRequestApiException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class UserService {
         this.followValidator = followValidator;
     }
 
-    public void follow(int userId, int userIdToFollow) {
+    public void follow(int userId, int userIdToFollow) throws BadRequestApiException {
         followValidator.validate(userId, userIdToFollow);
 
         User follower = userRepository.findById(userId).get();
