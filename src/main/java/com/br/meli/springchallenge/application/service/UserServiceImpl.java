@@ -1,6 +1,6 @@
 package com.br.meli.springchallenge.application.service;
 
-import com.br.meli.springchallenge.application.validator.FollowValidator;
+import com.br.meli.springchallenge.application.validator.UserValidator;
 import com.br.meli.springchallenge.dto.response.FollowerCountResponse;
 import com.br.meli.springchallenge.dto.response.FollowerListResponse;
 import com.br.meli.springchallenge.domain.model.Follower;
@@ -17,16 +17,16 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     private FollowerRepository followerRepository;
-    private FollowValidator followValidator;
+    private UserValidator userValidator;
 
-    public UserServiceImpl(UserRepository userRepository, FollowerRepository followerRepository, FollowValidator followValidator) {
+    public UserServiceImpl(UserRepository userRepository, FollowerRepository followerRepository, UserValidator userValidator) {
         this.userRepository = userRepository;
         this.followerRepository = followerRepository;
-        this.followValidator = followValidator;
+        this.userValidator = userValidator;
     }
 
     public void follow(int userId, int userIdToFollow) throws BadRequestApiException {
-        followValidator.validate(userId, userIdToFollow);
+        userValidator.validate(userId, userIdToFollow);
 
         User follower = userRepository.findById(userId).get();
         User following =  userRepository.findById(userIdToFollow).get();
@@ -38,19 +38,22 @@ public class UserServiceImpl implements UserService {
         followerRepository.deleteByIds(userId, userIdToFollow);
     }
 
-    public FollowerCountResponse getNumberOfFollowers(int userId) {
-        User user = userRepository.findById(userId).get();
+    public FollowerCountResponse getNumberOfFollowers(int userId) throws BadRequestApiException {
+        User user = userRepository.findById(userId).orElse(null);
+        userValidator.validate(user);
         return new FollowerCountResponse(user.getId(), user.getName(), user.countFollowers());
     }
 
-    public FollowerListResponse getFollowerList(int userId, String order) {
-        User user =  userRepository.findById(userId).get();
+    public FollowerListResponse getFollowerList(int userId, String order) throws BadRequestApiException {
+        User user =  userRepository.findById(userId).orElse(null);
+        userValidator.validateSeller(user);
         user.setFollowersOrderByName(order);
         return new FollowerListResponse(user);
     }
 
-    public FollowingListResponse getFollowingList(int userId, String order) {
-        User user =  userRepository.findById(userId).get();
+    public FollowingListResponse getFollowingList(int userId, String order) throws BadRequestApiException {
+        User user =  userRepository.findById(userId).orElse(null);
+        userValidator.validate(user);
         user.setFollowingOrderByName(order);
         return new FollowingListResponse(user);
     }

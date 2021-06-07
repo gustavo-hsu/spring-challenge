@@ -7,11 +7,11 @@ import com.br.meli.springchallenge.exceptions.BadRequestApiException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class FollowValidatorImpl implements FollowValidator {
+public class UserValidatorImpl implements UserValidator {
     private FollowerRepository followerRepository;
     private UserRepository userRepository;
 
-    public FollowValidatorImpl(FollowerRepository followerRepository, UserRepository userRepository) {
+    public UserValidatorImpl(FollowerRepository followerRepository, UserRepository userRepository) {
         this.followerRepository = followerRepository;
         this.userRepository = userRepository;
     }
@@ -38,6 +38,24 @@ public class FollowValidatorImpl implements FollowValidator {
 
         if(followerRepository.findByIds(userId, userIdToFollow) != null) {
             throw new BadRequestApiException("User already follow this seller");
+        }
+    }
+
+    @Override
+    public void validateSeller(User user) throws BadRequestApiException {
+        if(user == null) {
+            throw new BadRequestApiException("User not found");
+        }
+
+        if(!user.isSeller()) {
+            throw new BadRequestApiException("The user is not a seller");
+        }
+    }
+
+    @Override
+    public void validate(User user) throws BadRequestApiException {
+        if(user == null) {
+            throw new BadRequestApiException("User not found");
         }
     }
 }

@@ -14,11 +14,11 @@ import java.util.List;
 
      void unfollow(int userId, int userIdToFollow);
 
-     FollowerCountResponse getNumberOfFollowers(int userId);
+     FollowerCountResponse getNumberOfFollowers(int userId) throws BadRequestApiException;
 
-     FollowerListResponse getFollowerList(int userId, String order);
+     FollowerListResponse getFollowerList(int userId, String order) throws BadRequestApiException;
 
-     FollowingListResponse getFollowingList(int userId, String order);
+     FollowingListResponse getFollowingList(int userId, String order) throws BadRequestApiException;
 
      User create(User user);
 

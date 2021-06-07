@@ -24,6 +24,8 @@
 <h3> US 05: Publish a new post </h3>
 <h4> POST /products/newpost </h4>
 
+Obs: only existent sellers can publish posts
+
 ```
 {
     "userId": 2,

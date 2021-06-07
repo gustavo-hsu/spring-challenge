@@ -35,21 +35,21 @@ public class UserController {
     }
 
     @GetMapping("/{userId}/followers/count")
-    public ResponseEntity getNumberOfFollowers(@PathVariable int userId){
+    public ResponseEntity getNumberOfFollowers(@PathVariable int userId) throws BadRequestApiException {
         FollowerCountResponse numberOfFollowers = userService.getNumberOfFollowers(userId);
 
         return new ResponseEntity(numberOfFollowers, HttpStatus.OK);
     }
 
     @GetMapping("/{userId}/followers/list")
-    public ResponseEntity getFollowersList(@PathVariable int userId, @RequestParam(required = false) String order){
+    public ResponseEntity getFollowersList(@PathVariable int userId, @RequestParam(required = false) String order) throws BadRequestApiException {
         FollowerListResponse followerList = userService.getFollowerList(userId, order);
 
         return new ResponseEntity(followerList, HttpStatus.OK);
     }
 
     @GetMapping("/{userId}/followed/list")
-    public ResponseEntity getFollowedList(@PathVariable int userId, @RequestParam(required = false) String order){
+    public ResponseEntity getFollowedList(@PathVariable int userId, @RequestParam(required = false) String order) throws BadRequestApiException {
         FollowingListResponse followedList = userService.getFollowingList(userId, order);
 
         return new ResponseEntity(followedList, HttpStatus.OK);

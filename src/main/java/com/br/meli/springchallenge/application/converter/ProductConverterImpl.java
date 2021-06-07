@@ -28,6 +28,10 @@ public class ProductConverterImpl implements ProductConverter {
             throw new BadRequestApiException("User with id " + request.getUserId() + " not found");
         }
 
+        if (!user.isSeller()) {
+            throw new BadRequestApiException("User with id " + request.getUserId() + " is not a seller and can not publish posts");
+        }
+
         if(category == null) {
             throw new BadRequestApiException("Category with id " + request.getCategory() + " not found");
         }
