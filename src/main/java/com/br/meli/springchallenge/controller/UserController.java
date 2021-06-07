@@ -7,18 +7,17 @@ import com.br.meli.springchallenge.dto.response.FollowerListResponse;
 import com.br.meli.springchallenge.domain.model.User;
 import com.br.meli.springchallenge.dto.response.FollowingListResponse;
 import com.br.meli.springchallenge.exceptions.BadRequestApiException;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
+@AllArgsConstructor
 public class UserController {
 
     private UserService userService;
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
 
     @PostMapping("/{userId}/follow/{userIdToFollow}")
     public ResponseEntity follow(@PathVariable int userId, @PathVariable int userIdToFollow) throws BadRequestApiException {

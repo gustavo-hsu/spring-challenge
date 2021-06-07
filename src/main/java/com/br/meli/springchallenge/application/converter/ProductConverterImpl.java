@@ -7,17 +7,14 @@ import com.br.meli.springchallenge.domain.repository.CategoryRepository;
 import com.br.meli.springchallenge.domain.repository.UserRepository;
 import com.br.meli.springchallenge.dto.PostDTO;
 import com.br.meli.springchallenge.exceptions.BadRequestApiException;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@AllArgsConstructor
 public class ProductConverterImpl implements ProductConverter {
     private UserRepository userRepository;
     private CategoryRepository categoryRepository;
-
-    private ProductConverterImpl(UserRepository userRepository, CategoryRepository categoryRepository) {
-        this.userRepository = userRepository;
-        this.categoryRepository = categoryRepository;
-    }
 
     @Override
     public Post fromPostRequestToPostEntity(PostDTO request) throws BadRequestApiException {

@@ -13,12 +13,14 @@ import com.br.meli.springchallenge.dto.PostDTO;
 import com.br.meli.springchallenge.dto.response.PostsResponse;
 import com.br.meli.springchallenge.dto.response.PromotionCountResponse;
 import com.br.meli.springchallenge.exceptions.BadRequestApiException;
+import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class ProductServiceImpl implements ProductService {
     private PostRepository postRepository;
     private CategoryRepository categoryRepository;
@@ -26,22 +28,6 @@ public class ProductServiceImpl implements ProductService {
     private ProductRepository productRepository;
     private UserRepository userRepository;
     private UserValidator userValidator;
-
-    public ProductServiceImpl(
-            PostRepository postRepository,
-            CategoryRepository categoryRepository,
-            ProductConverter productConverter,
-            ProductRepository productRepository,
-            UserRepository userRepository,
-            UserValidator userValidator
-    ) {
-        this.postRepository = postRepository;
-        this.productConverter = productConverter;
-        this.categoryRepository = categoryRepository;
-        this.productRepository = productRepository;
-        this.userRepository = userRepository;
-        this.userValidator = userValidator;
-    }
 
     @Override
     public Post createPost(PostDTO postDTO) throws BadRequestApiException {

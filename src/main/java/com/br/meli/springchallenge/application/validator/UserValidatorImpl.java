@@ -4,17 +4,14 @@ import com.br.meli.springchallenge.domain.model.User;
 import com.br.meli.springchallenge.domain.repository.FollowerRepository;
 import com.br.meli.springchallenge.domain.repository.UserRepository;
 import com.br.meli.springchallenge.exceptions.BadRequestApiException;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@AllArgsConstructor
 public class UserValidatorImpl implements UserValidator {
     private FollowerRepository followerRepository;
     private UserRepository userRepository;
-
-    public UserValidatorImpl(FollowerRepository followerRepository, UserRepository userRepository) {
-        this.followerRepository = followerRepository;
-        this.userRepository = userRepository;
-    }
 
     @Override
     public void validate(int userId, int userIdToFollow) throws BadRequestApiException {
