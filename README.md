@@ -1,5 +1,9 @@
 <h1> How to test the application </h1>
 
+<h2> You can use the POSTMAN </h2>
+<a href="/src/main/resources/PostmanCollection.json"> Postman Collection </a>
+
+____
 <h3> Create some users </h3>
 <h4> POST /users </h4>
 
