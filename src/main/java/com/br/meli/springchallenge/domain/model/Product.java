@@ -26,8 +26,7 @@ public class Product {
     private boolean hasPromo = false;
     private double discount = 0D;
 
-    public Product(int id, String productName, String type, String brand, String color, String notes, Double price, boolean hasPromo, double discount) {
-        this.id = id;
+    public Product(String productName, String type, String brand, String color, String notes, Double price, boolean hasPromo, double discount) {
         this.productName = productName;
         this.type = type;
         this.brand = brand;

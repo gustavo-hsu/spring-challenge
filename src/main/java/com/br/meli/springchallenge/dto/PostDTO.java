@@ -49,7 +49,6 @@ public class PostDTO {
     public Product toProductEntity() {
         Product product =
                 new Product(
-                        this.detail.getProductId(),
                         this.detail.getProductName(),
                         this.detail.getType(),
                         this.detail.getBrand(),

@@ -33,10 +33,10 @@ Obs: only existent sellers can publish posts
 ```
 {
     "userId": 2,
-    "id_post": 2,
+    "idPost": 2,
     "date": "02-06-2021",
     "detail": {
-        "product_id": 2,
+        "productId": 2,
         "productName": "Cadeira Gamer",
         "type": "Gamer",
         "brand": "Racer",
@@ -54,7 +54,7 @@ You probably got an error, because there are none categories created. To create 
 
 ```
 { 
-    "name": "CategoryName"
+    "name": "categoryName"
 }
 ```
 
@@ -96,14 +96,14 @@ ___
 ```
 {
     "userId": 2,
-    "id_post": 2,
+    "idPost": 2,
     "date": "02-06-2021",
     "detail": {
-    "product_id": 2,
-    "productName": "Cadeira Gamer",
+    "productId": 3,
+    "productName": "Cadeira Gamer X",
     "type": "Gamer",
     "brand": "Racer",
-    "color": "Red & Black",
+    "color": "White & Black",
     "notes": "Special Edition"
     },
     "hasPromo": true,
