@@ -76,6 +76,6 @@ public class ProductServiceImpl implements ProductService {
     }
 
     private Sort setOrderByDate(String order) {
-        return (order == null || order.toLowerCase().contains("asc")) ? Sort.by("date").ascending() : Sort.by("date").descending();
+        return (order == null || order.toLowerCase().contains("desc")) ? Sort.by("date").descending() : Sort.by("date").ascending();
     }
 }
