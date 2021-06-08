@@ -22,7 +22,7 @@ public class UserController {
     public ResponseEntity follow(@PathVariable int userId, @PathVariable int userIdToFollow) throws ApiException {
         userService.follow(userId, userIdToFollow);
 
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity("Successfully followed!", HttpStatus.OK);
     }
 
     @PostMapping("/{userId}/unfollow/{userIdToFollow}")

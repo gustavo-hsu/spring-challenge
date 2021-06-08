@@ -22,14 +22,14 @@ public class ProductController {
     public ResponseEntity createPost(@RequestBody PostDTO postDTO) throws ApiException {
         productService.createPost(postDTO);
 
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity("Post created with success", HttpStatus.OK);
     }
 
     @PostMapping("/newpromopost")
     public ResponseEntity createPromoPost(@RequestBody PostDTO postDTO) throws ApiException {
         productService.createPromoPost(postDTO);
 
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity("Post created with success", HttpStatus.OK);
     }
 
     @GetMapping("/followed/{userId}/list")
