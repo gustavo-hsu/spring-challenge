@@ -52,9 +52,9 @@ public class User {
 
     public List<Follower> setFollowersOrderByName(String order) {
         if (order == null || order.toLowerCase().contains("asc")) {
-            this.followers.sort(Comparator.comparing(Follower::getFollowerName).reversed());
-        } else {
             this.followers.sort(Comparator.comparing(Follower::getFollowerName));
+        } else {
+            this.followers.sort(Comparator.comparing(Follower::getFollowerName).reversed());
         }
 
         return this.followers;
@@ -62,9 +62,9 @@ public class User {
 
     public List<Follower> setFollowingOrderByName(String order) {
         if (order == null || order.toLowerCase().contains("asc")) {
-            this.following.sort(Comparator.comparing(Follower::getFollowingName).reversed());
-        } else {
             this.following.sort(Comparator.comparing(Follower::getFollowingName));
+        } else {
+            this.following.sort(Comparator.comparing(Follower::getFollowingName).reversed());
         }
 
         return following;

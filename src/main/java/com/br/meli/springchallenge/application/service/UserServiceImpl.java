@@ -21,6 +21,7 @@ public class UserServiceImpl implements UserService {
     private FollowerRepository followerRepository;
     private UserValidator userValidator;
 
+    @Override
     public void follow(int userId, int userIdToFollow) throws ApiException {
         userValidator.validate(userId, userIdToFollow);
 
@@ -30,16 +31,19 @@ public class UserServiceImpl implements UserService {
         followerRepository.save(new Follower(following, follower));
     }
 
+    @Override
     public void unfollow(int userId, int userIdToFollow) {
         followerRepository.deleteByIds(userId, userIdToFollow);
     }
 
+    @Override
     public FollowerCountResponse getNumberOfFollowers(int userId) throws ApiException {
         User user = userRepository.findById(userId).orElse(null);
         userValidator.validate(user);
         return new FollowerCountResponse(user.getId(), user.getName(), user.countFollowers());
     }
 
+    @Override
     public FollowerListResponse getFollowerList(int userId, String order) throws ApiException {
         User user =  userRepository.findById(userId).orElse(null);
         userValidator.validateSeller(user);
@@ -47,6 +51,7 @@ public class UserServiceImpl implements UserService {
         return new FollowerListResponse(user);
     }
 
+    @Override
     public FollowingListResponse getFollowingList(int userId, String order) throws ApiException {
         User user =  userRepository.findById(userId).orElse(null);
         userValidator.validate(user);
@@ -54,10 +59,12 @@ public class UserServiceImpl implements UserService {
         return new FollowingListResponse(user);
     }
 
+    @Override
     public User create(User user) {
         return userRepository.save(user);
     }
 
+    @Override
     public List<User> getAll() {
         return userRepository.findAll();
     }

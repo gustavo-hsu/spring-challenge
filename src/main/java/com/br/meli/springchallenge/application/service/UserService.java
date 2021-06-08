@@ -1,6 +1,5 @@
 package com.br.meli.springchallenge.application.service;
 
-import com.br.meli.springchallenge.domain.model.Follower;
 import com.br.meli.springchallenge.domain.model.User;
 import com.br.meli.springchallenge.dto.response.FollowerCountResponse;
 import com.br.meli.springchallenge.dto.response.FollowerListResponse;
