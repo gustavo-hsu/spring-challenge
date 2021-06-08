@@ -26,10 +26,10 @@ public class UserController {
     }
 
     @PostMapping("/{userId}/unfollow/{userIdToFollow}")
-    public ResponseEntity unfollow(@PathVariable int userId, @PathVariable int userIdToFollow) {
+    public ResponseEntity unfollow(@PathVariable int userId, @PathVariable int userIdToFollow) throws ApiException {
         userService.unfollow(userId, userIdToFollow);
 
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity("Successfully unfollowed!", HttpStatus.OK);
     }
 
     @GetMapping("/{userId}/followers/count")

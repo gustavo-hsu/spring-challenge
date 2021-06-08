@@ -11,7 +11,7 @@ import java.util.List;
  public interface UserService {
      void follow(int userId, int userIdToFollow) throws ApiException;
 
-     void unfollow(int userId, int userIdToFollow);
+     void unfollow(int userId, int userIdToFollow) throws ApiException;
 
      FollowerCountResponse getNumberOfFollowers(int userId) throws ApiException;
 

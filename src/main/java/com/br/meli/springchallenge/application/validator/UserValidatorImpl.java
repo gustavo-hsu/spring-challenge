@@ -57,4 +57,23 @@ public class UserValidatorImpl implements UserValidator {
             throw new NotFoundApiException("User not found");
         }
     }
+
+    @Override
+    public void validateUnfollow(int userId, int userIdToUnfollow) throws ApiException {
+        if(userId == userIdToUnfollow) {
+            throw new BadRequestApiException("A user can not follow/unfollow himself");
+        }
+
+        if(userRepository.findById(userId).isEmpty()) {
+            throw new NotFoundApiException("User with id " + userId + " not found");
+        }
+
+        if(userRepository.findById(userIdToUnfollow).isEmpty()) {
+            throw new NotFoundApiException("User with id " + userIdToUnfollow + " not found");
+        }
+
+        if(followerRepository.findByIds(userId, userIdToUnfollow) == null) {
+            throw new BadRequestApiException("The user with id" + userId +  " do not follow user with id " + userIdToUnfollow);
+        }
+    }
 }

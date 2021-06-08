@@ -9,4 +9,6 @@ public interface UserValidator {
     void validateSeller(User user) throws ApiException;
 
     void validate(User user) throws ApiException;
+
+    void validateUnfollow(int userId, int userIdToUnfollow) throws ApiException;
 }

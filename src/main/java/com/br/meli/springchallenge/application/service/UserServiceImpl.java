@@ -32,8 +32,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void unfollow(int userId, int userIdToFollow) {
-        followerRepository.deleteByIds(userId, userIdToFollow);
+    public void unfollow(int userId, int userIdToUnfollow) throws ApiException {
+        userValidator.validateUnfollow(userId, userIdToUnfollow);
+
+        followerRepository.deleteByIds(userId, userIdToUnfollow);
     }
 
     @Override
